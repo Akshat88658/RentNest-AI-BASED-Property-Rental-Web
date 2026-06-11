@@ -262,15 +262,6 @@ function Register() {
             </button>
           </form>
 
-          {/* Social Sign Up */}
-          <div className="auth-social-buttons">
-            <button type="button" className="social-btn">
-              <svg style={{ width: '18px', height: '18px' }} viewBox="0 0 24 24">
-                <path fill="currentColor" d="M12.24 10.285V13.4h6.887C18.2 15.614 15.645 18 12.24 18c-3.86 0-7-3.14-7-7s3.14-7 7-7c1.706 0 3.257.614 4.47 1.636l2.455-2.455C17.513 1.83 15.06 1 12.24 1c-6.077 0-11 4.923-11 11s4.923 11 11 11c5.98 0 10.74-4.255 10.74-11 0-.742-.08-1.3-.22-1.715H12.24z"/>
-              </svg>
-              Sign up with Google
-            </button>
-          </div>
 
           <p style={{
             marginTop: '1.5rem',
