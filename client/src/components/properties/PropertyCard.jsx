@@ -43,12 +43,6 @@ function PropertyCard({ property }) {
             ⭐ {averageRating.toFixed(1)}
           </div>
         )}
-
-        <div className="property-card-overlay">
-          <span className="btn btn-primary btn-sm animate-scale-in">
-            View Details
-          </span>
-        </div>
       </div>
 
       <div className="property-card-body">
