@@ -11,7 +11,7 @@
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "install-all": "npm install && npm install --prefix client",
     "build": "npm run build --prefix client",
-    "render-build": "npm install --legacy-peer-deps && npm install --prefix client --legacy-peer-deps && npm run build --prefix client",
+    "render-build": "npm install --legacy-peer-deps --include=dev && npm install --prefix client --legacy-peer-deps --include=dev && npm run build --prefix client",
     "seed": "node server/config/seeder.js"
   },
   "dependencies": {

@@ -58,13 +58,12 @@ app.get('/api/v1/health', (req, res) => {
 });
 
 // ── Serve React in production ──────────────────
-if (process.env.NODE_ENV === 'production') {
-  const clientDist = path.resolve(__dirname, '../client/dist');
-  app.use(express.static(clientDist));
-  app.get('*', (req, res) => {
-    res.sendFile(path.join(clientDist, 'index.html'));
-  });
-}
+// Serve React client
+const clientDist = path.resolve(__dirname, '../client/dist');
+app.use(express.static(clientDist));
+app.get('*', (req, res) => {
+  res.sendFile(path.join(clientDist, 'index.html'));
+});
 
 // ── Error handling ─────────────────────────────
 app.use(notFound);
