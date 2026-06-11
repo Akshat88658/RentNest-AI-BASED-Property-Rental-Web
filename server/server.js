@@ -17,9 +17,11 @@ connectDB();
 
 const app = express();
 
+app.set('trust proxy', 1);
+
 // ── Security & parsing middleware ───────────────
 app.use(cors({
-  origin: process.env.CLIENT_URL || true,
+  origin: true,
   credentials: true,
 }));
 app.use(express.json({ limit: '10mb' }));
