@@ -10,10 +10,11 @@ const path = require('path');
 dotenv.config({ path: path.resolve(__dirname, '../.env') });
 
 const connectDB = require('./config/db');
+const autoSeed = require('./config/autoSeed');
 const { errorHandler, notFound } = require('./middleware/errorMiddleware');
 
-// ── Connect to database ────────────────────────
-connectDB();
+// ── Connect to database & auto-seed if empty ──
+connectDB().then(() => autoSeed());
 
 const app = express();
 
