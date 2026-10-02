@@ -20,7 +20,7 @@ const seedDatabase = async () => {
     await Property.deleteMany();
     await Review.deleteMany();
     await Booking.deleteMany();
-    console.log('🗑️  Existing data (Users, Properties, Reviews, Bookings) cleared.');
+    console.log('ðŸ—‘ï¸  Existing data (Users, Properties, Reviews, Bookings) cleared.');
 
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash('password123', salt);
@@ -105,7 +105,7 @@ const seedDatabase = async () => {
           checkOut: '11:00 AM',
           cancellationPolicy: 'Free cancellation up to 7 days before check-in',
           securityDeposit: 30000,
-          extraCharges: 'No extra charges for 1 guest. Additional guest: ₹5,000/month',
+          extraCharges: 'No extra charges for 1 guest. Additional guest: â‚¹5,000/month',
           houseRules: ['No smoking', 'No loud music after 10 PM', 'Pets allowed with prior approval']
         },
         aiDescription: 'Ideal studio option for tech professionals in Whitefield. Features optimized layout, fast 200 Mbps Wi-Fi, and convenient proximity to IT parks. High energy efficiency and professional management make it highly recommended.',
@@ -139,7 +139,7 @@ const seedDatabase = async () => {
           checkOut: '11:00 AM',
           cancellationPolicy: '50% refund if cancelled 14 days before check-in',
           securityDeposit: 90000,
-          extraCharges: 'Utilities included. Extra guest: ₹8,000/month. Housekeeping: ₹2,000/session',
+          extraCharges: 'Utilities included. Extra guest: â‚¹8,000/month. Housekeeping: â‚¹2,000/session',
           houseRules: ['No smoking indoors', 'No pets without prior approval', 'Quiet hours: 10 PM - 8 AM', 'No commercial activities']
         },
         aiDescription: 'Stunning premium 2BHK listing in high-demand Bandra West. Showcases outstanding skyline views, integrated automation, and building gym/pool facilities. Excellent natural light throughout the day.',
@@ -173,7 +173,7 @@ const seedDatabase = async () => {
           checkOut: '12:00 PM',
           cancellationPolicy: 'Non-refundable deposit, free cancellation 30 days before',
           securityDeposit: 160000,
-          extraCharges: 'Utilities: ₹5,000-8,000/month. Maintenance: included. Extra guest: ₹5,000/month',
+          extraCharges: 'Utilities: â‚¹5,000-8,000/month. Maintenance: included. Extra guest: â‚¹5,000/month',
           houseRules: ['No parties or loud events', 'Maintain garden', 'Report maintenance issues promptly', 'No commercial use']
         },
         aiDescription: 'Spacious family villa in secure Vasant Kunj. Integrates eco-friendly solar setups, manicured private lawn, and double-car garage. Offers high privacy and premium community security.',
@@ -233,7 +233,7 @@ const seedDatabase = async () => {
           coordinates: { lat: 12.9752, lng: 77.6245 }
         },
         features: { bedrooms: 3, bathrooms: 3, area: 3500, furnished: 'fully-furnished', parking: true, petFriendly: true },
-        amenities: ['Rooftop Terrace', 'Home Theater', 'Gym', 'Wine Cellar', 'Smart Home', 'Concierge', 'Spa Bath', 'Premium Kitchen', 'Elevator', '360° Views'],
+        amenities: ['Rooftop Terrace', 'Home Theater', 'Gym', 'Wine Cellar', 'Smart Home', 'Concierge', 'Spa Bath', 'Premium Kitchen', 'Elevator', '360Â° Views'],
         bookingDetails: {
           minStay: 12,
           maxStay: 365,
@@ -275,7 +275,7 @@ const seedDatabase = async () => {
           checkOut: '11:00 AM',
           cancellationPolicy: 'Free cancellation up to 14 days before check-in',
           securityDeposit: 70000,
-          extraCharges: 'Gardener fee: ₹1,500/month.',
+          extraCharges: 'Gardener fee: â‚¹1,500/month.',
           houseRules: ['Maintain backyard cleanliness', 'No illegal activities', 'Pets allowed']
         },
         aiDescription: 'Excellent family home in suburban Gachibowli. Offers spacious yard, garage, and kid-friendly environment. Proximity to international schools is a major highlight.',
@@ -309,7 +309,7 @@ const seedDatabase = async () => {
           checkOut: '11:00 AM',
           cancellationPolicy: '30% refund if cancelled 10 days before',
           securityDeposit: 110000,
-          extraCharges: 'Utilities: ₹3,000-4,000/month. Housekeeping: ₹1,500/session. Pet charge: ₹3,000/month',
+          extraCharges: 'Utilities: â‚¹3,000-4,000/month. Housekeeping: â‚¹1,500/session. Pet charge: â‚¹3,000/month',
           houseRules: ['Quiet hours after 10 PM', 'No large gatherings', 'Pets allowed with approval', 'Parking strictly assigned']
         },
         aiDescription: 'Centrally-located modern condo in T Nagar, Chennai. Walkable access to commercial hotspots. Furnished with energy-efficient appliances, modular kitchen, and smart air purification.',
@@ -343,7 +343,7 @@ const seedDatabase = async () => {
           checkOut: '11:00 AM',
           cancellationPolicy: 'Free cancellation up to 5 days before',
           securityDeposit: 84000,
-          extraCharges: 'No utilities included. Utilities: ₹2,500-3,500/month. Guest pass: ₹500',
+          extraCharges: 'No utilities included. Utilities: â‚¹2,500-3,500/month. Guest pass: â‚¹500',
           houseRules: ['Respect artistic community', 'Keep noise levels reasonable', 'Parking on designated spots only', 'Art installations allowed']
         },
         aiDescription: 'Highly aesthetic warehouse loft in Indiranagar Arts district. Boasts exposed bricks, 15-foot high ceilings, study workspace, and community access to local galleries.',
@@ -377,7 +377,7 @@ const seedDatabase = async () => {
           checkOut: '10:00 AM',
           cancellationPolicy: 'Full refund if cancelled 7 days before check-in',
           securityDeposit: 50000,
-          extraCharges: 'Cleaning charges: ₹1,000 per stay.',
+          extraCharges: 'Cleaning charges: â‚¹1,000 per stay.',
           houseRules: ['Wash sand off before entering', 'Quiet hours after 11 PM', 'Pets allowed with care']
         },
         aiDescription: 'Excellent beachfront property in Anjuna. Direct ocean front balcony, air conditioning, and walking distance to beachfront cafes. Exceptional option for remote workers.',
@@ -479,7 +479,7 @@ const seedDatabase = async () => {
           checkOut: '11:00 AM',
           cancellationPolicy: 'Flexible - 7 days notice',
           securityDeposit: 110000,
-          extraCharges: 'Utilities: ₹3,000-4,000/month. No housekeeping included. Studio rental available',
+          extraCharges: 'Utilities: â‚¹3,000-4,000/month. No housekeeping included. Studio rental available',
           houseRules: ['Respect architectural integrity', 'No structural modifications', 'Photography requests allowed', 'Art community welcome']
         },
         aiDescription: 'Exceptional warehouse loft conversion in Okhla. Highlighted by solid timber structures, polished concrete floors, tall gallery windows, and dedicated workspace.',
@@ -513,7 +513,7 @@ const seedDatabase = async () => {
           checkOut: '12:00 PM',
           cancellationPolicy: 'Non-refundable deposit, flexible cancellation',
           securityDeposit: 190000,
-          extraCharges: 'Pool maintenance: ₹3,000/month. Gardening: ₹2,000/month. Housekeeping available',
+          extraCharges: 'Pool maintenance: â‚¹3,000/month. Gardening: â‚¹2,000/month. Housekeeping available',
           houseRules: ['Pool safety rules strictly enforced', 'Supervision of children required', 'No commercial activities', 'Maintain property condition']
         },
         aiDescription: 'Exquisite 4BHK family villa in exclusive Jubilee Hills. Boasts a private filtration-equipped pool, security surveillance systems, outdoor brick BBQ, and playground.',
@@ -547,7 +547,7 @@ const seedDatabase = async () => {
           checkOut: '11:00 AM',
           cancellationPolicy: '20% refund if cancelled 10 days before',
           securityDeposit: 136000,
-          extraCharges: 'Premium WiFi included. Tech support: available. Extra device setup: ₹1,000',
+          extraCharges: 'Premium WiFi included. Tech support: available. Extra device setup: â‚¹1,000',
           houseRules: ['Treat tech equipment with care', 'Report tech issues immediately', 'WiFi password sharing prohibited', 'No network overload']
         },
         aiDescription: 'IoT-enabled luxury apartment on Outer Ring Road. Integrated smart locks, smart thermostat climate controls, smart curtains, and robot helper schedules.',
@@ -581,7 +581,7 @@ const seedDatabase = async () => {
           checkOut: '12:00 PM',
           cancellationPolicy: 'Flexible cancellation',
           securityDeposit: 40000,
-          extraCharges: 'Studio setup fee: ₹2,000 (optional).',
+          extraCharges: 'Studio setup fee: â‚¹2,000 (optional).',
           houseRules: ['Do not damage walls', 'Respect creative neighbors', 'No commercial shoots without permission']
         },
         aiDescription: 'Artistic loft space in Malleshwaram. Tall North-facing gallery windows invite excellent neutral lighting. Perfect workspace layout for artists.',
@@ -607,7 +607,7 @@ const seedDatabase = async () => {
           coordinates: { lat: 13.0289, lng: 80.2606 }
         },
         features: { bedrooms: 2, bathrooms: 2, area: 1000, furnished: 'fully-furnished', parking: true, petFriendly: false },
-        amenities: ['Heritage Design', 'Rooftop Access', 'Library', 'Lounge', 'Café', 'Concierge', 'Art Gallery', 'Heritage Tours', 'WiFi'],
+        amenities: ['Heritage Design', 'Rooftop Access', 'Library', 'Lounge', 'CafÃ©', 'Concierge', 'Art Gallery', 'Heritage Tours', 'WiFi'],
         bookingDetails: {
           minStay: 3,
           maxStay: 365,
@@ -615,23 +615,29 @@ const seedDatabase = async () => {
           checkOut: '11:00 AM',
           cancellationPolicy: '50% refund if cancelled 14 days before',
           securityDeposit: 104000,
-          extraCharges: 'Heritage tour included. Café meals optional. Parking: ₹2,000/month extra',
+          extraCharges: 'Heritage tour included. CafÃ© meals optional. Parking: â‚¹2,000/month extra',
           houseRules: ['Respect historical property', 'No damage to heritage features', 'Photography for personal use only', 'Curated events available']
         },
-        aiDescription: 'Restored colonial heritage home in historical Mylapore. High arches, teakwood fixtures, and rooftop garden access. Fully managed with butler/café options.',
-        images: [\n          { url: 'https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=800&h=600&fit=crop&q=80' },\n          { url: 'https://images.unsplash.com/photo-1576941089067-2de3dd21bfb0?w=800&h=600&fit=crop&q=80' },\n          { url: 'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800&h=600&fit=crop&q=80' },\n          { url: 'https://images.unsplash.com/photo-1540932239986-310128078ceb?w=800&h=600&fit=crop&q=80' }\n        ]\n      },
+        aiDescription: 'Restored colonial heritage home in historical Mylapore. High arches, teakwood fixtures, and rooftop garden access. Fully managed with butler/cafÃ© options.',
+        images: [
+          { url: 'https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=800&h=600&fit=crop&q=80' },
+          { url: 'https://images.unsplash.com/photo-1576941089067-2de3dd21bfb0?w=800&h=600&fit=crop&q=80' },
+          { url: 'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800&h=600&fit=crop&q=80' },
+          { url: 'https://images.unsplash.com/photo-1540932239986-310128078ceb?w=800&h=600&fit=crop&q=80' }
+        ]
+      },
 
-      // ── 6 NEW OFFER PROPERTIES ─────────────────────────
+      // â”€â”€ 6 NEW OFFER PROPERTIES â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
       {
-        title: 'Skyline Studio — Zero Brokerage Deal',
-        description: 'Brand new studio apartment on the 18th floor with panoramic city views. Fully furnished with premium interiors, modular kitchen, and high-speed fibre internet. No brokerage, no hidden charges — move in today at a flat 25% off the regular rent. Ideal for single professionals and remote workers who want a premium address without the premium price tag.',
+        title: 'Skyline Studio â€” Zero Brokerage Deal',
+        description: 'Brand new studio apartment on the 18th floor with panoramic city views. Fully furnished with premium interiors, modular kitchen, and high-speed fibre internet. No brokerage, no hidden charges â€” move in today at a flat 25% off the regular rent. Ideal for single professionals and remote workers who want a premium address without the premium price tag.',
         propertyType: 'studio',
         status: 'available',
         isVerified: true,
         price: { amount: 18000, currency: 'INR', period: 'monthly' },
         offer: {
           isActive: true,
-          label: '🔥 Zero Brokerage + 25% Off — Never Expires',
+          label: 'ðŸ”¥ Zero Brokerage + 25% Off â€” Never Expires',
           discountPercent: 25,
           originalPrice: 24000,
           badge: 'BESTSELLER',
@@ -655,7 +661,7 @@ const seedDatabase = async () => {
           extraCharges: 'All utilities included in rent. Zero brokerage guaranteed.',
           houseRules: ['No smoking', 'No parties', 'Maintain cleanliness'],
         },
-        aiDescription: 'Premium sky-high studio in Koramangala — Bangalore\'s startup hub. At 25% below market rate with zero brokerage, this is the smartest rental deal in the city. Features panoramic views, fibre internet, and full building amenities.',
+        aiDescription: 'Premium sky-high studio in Koramangala â€” Bangalore\'s startup hub. At 25% below market rate with zero brokerage, this is the smartest rental deal in the city. Features panoramic views, fibre internet, and full building amenities.',
         images: [
           { url: 'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800&h=600&fit=crop&q=80' },
           { url: 'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800&h=600&fit=crop&q=80' },
@@ -664,15 +670,15 @@ const seedDatabase = async () => {
         ],
       },
       {
-        title: 'Sea-Breeze 2BHK — First 3 Months Free Maintenance',
-        description: 'Airy 2-bedroom apartment just 300 metres from Juhu Beach. Spacious balcony with partial sea views, cross ventilation, and wooden flooring throughout. Enjoy a flat 20% discount on rent plus complimentary society maintenance for the first 3 months — an offer that never ends for RentNest members. Perfect for couples and families who love coastal living.',
+        title: 'Sea-Breeze 2BHK â€” First 3 Months Free Maintenance',
+        description: 'Airy 2-bedroom apartment just 300 metres from Juhu Beach. Spacious balcony with partial sea views, cross ventilation, and wooden flooring throughout. Enjoy a flat 20% discount on rent plus complimentary society maintenance for the first 3 months â€” an offer that never ends for RentNest members. Perfect for couples and families who love coastal living.',
         propertyType: 'apartment',
         status: 'available',
         isVerified: true,
         price: { amount: 52000, currency: 'INR', period: 'monthly' },
         offer: {
           isActive: true,
-          label: '🌊 20% Off + Free Maintenance — Ongoing Offer',
+          label: 'ðŸŒŠ 20% Off + Free Maintenance â€” Ongoing Offer',
           discountPercent: 20,
           originalPrice: 65000,
           badge: 'HOT DEAL',
@@ -693,10 +699,10 @@ const seedDatabase = async () => {
           checkOut: '11:00 AM',
           cancellationPolicy: '50% refund if cancelled 14 days before check-in',
           securityDeposit: 104000,
-          extraCharges: 'First 3 months maintenance free. Post that ₹3,500/month society charge.',
+          extraCharges: 'First 3 months maintenance free. Post that â‚¹3,500/month society charge.',
           houseRules: ['No loud music after 10 PM', 'Pets allowed with deposit', 'No commercial activities'],
         },
-        aiDescription: 'Sun-drenched coastal apartment near Juhu Beach. At 20% below market with free maintenance for 3 months, this RentNest exclusive is unbeatable. Sea breeze, wooden floors, and full amenities — all year round.',
+        aiDescription: 'Sun-drenched coastal apartment near Juhu Beach. At 20% below market with free maintenance for 3 months, this RentNest exclusive is unbeatable. Sea breeze, wooden floors, and full amenities â€” all year round.',
         images: [
           { url: 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&h=600&fit=crop&q=80' },
           { url: 'https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=800&h=600&fit=crop&q=80' },
@@ -705,15 +711,15 @@ const seedDatabase = async () => {
         ],
       },
       {
-        title: 'Royal 4BHK Villa — 30% Off, Lifetime Price Lock',
-        description: 'A magnificent 4-bedroom villa set in a gated community with a private pool, lush garden, and dedicated servant quarters. Designed in a blend of Mughal and contemporary architecture. RentNest\'s Lifetime Price Lock guarantee means your rent never increases as long as you stay — plus an immediate 30% discount off the open-market rate. Ideal for large families and executives.',
+        title: 'Royal 4BHK Villa â€” 30% Off, Lifetime Price Lock',
+        description: 'A magnificent 4-bedroom villa set in a gated community with a private pool, lush garden, and dedicated servant quarters. Designed in a blend of Mughal and contemporary architecture. RentNest\'s Lifetime Price Lock guarantee means your rent never increases as long as you stay â€” plus an immediate 30% discount off the open-market rate. Ideal for large families and executives.',
         propertyType: 'villa',
         status: 'available',
         isVerified: true,
         price: { amount: 84000, currency: 'INR', period: 'monthly' },
         offer: {
           isActive: true,
-          label: '👑 30% Off + Lifetime Price Lock — Exclusive',
+          label: 'ðŸ‘‘ 30% Off + Lifetime Price Lock â€” Exclusive',
           discountPercent: 30,
           originalPrice: 120000,
           badge: 'EXCLUSIVE',
@@ -734,7 +740,7 @@ const seedDatabase = async () => {
           checkOut: '12:00 PM',
           cancellationPolicy: '30-day notice required. Security deposit fully refundable.',
           securityDeposit: 168000,
-          extraCharges: 'Pool maintenance ₹4,000/month. Garden: ₹2,500/month. Solar offsets electricity bills.',
+          extraCharges: 'Pool maintenance â‚¹4,000/month. Garden: â‚¹2,500/month. Solar offsets electricity bills.',
           houseRules: ['No events without prior approval', 'Pool safety rules apply', 'Maintain garden', 'EV charging available for residents only'],
         },
         aiDescription: 'Grand 4BHK villa in Gurgaon\'s most coveted gated community. At 30% off with a lifetime rent lock, this RentNest deal is unparalleled. Private pool, solar power, EV charging, and Mughal-inspired architecture define luxury living.',
@@ -746,15 +752,15 @@ const seedDatabase = async () => {
         ],
       },
       {
-        title: 'Urban Studio Pod — Pay for 11, Get 12 Months',
-        description: 'Compact and cleverly designed studio pod in the heart of Connaught Place — Delhi\'s most iconic address. Features a Murphy bed, convertible workspace, smart storage, and lightning-fast 500 Mbps internet. Our never-ending RentNest offer: pay for 11 months and get the 12th absolutely free, every year. Perfect for young professionals, diplomats, and digital nomads.',
+        title: 'Urban Studio Pod â€” Pay for 11, Get 12 Months',
+        description: 'Compact and cleverly designed studio pod in the heart of Connaught Place â€” Delhi\'s most iconic address. Features a Murphy bed, convertible workspace, smart storage, and lightning-fast 500 Mbps internet. Our never-ending RentNest offer: pay for 11 months and get the 12th absolutely free, every year. Perfect for young professionals, diplomats, and digital nomads.',
         propertyType: 'studio',
         status: 'available',
         isVerified: true,
         price: { amount: 22000, currency: 'INR', period: 'monthly' },
         offer: {
           isActive: true,
-          label: '🎁 Pay 11 Months, Get 12th Free — Every Year',
+          label: 'ðŸŽ Pay 11 Months, Get 12th Free â€” Every Year',
           discountPercent: 8,
           originalPrice: 24000,
           badge: 'FAN FAVOURITE',
@@ -776,9 +782,9 @@ const seedDatabase = async () => {
           cancellationPolicy: 'Free cancellation up to 5 days before check-in',
           securityDeposit: 22000,
           extraCharges: 'All utilities included. 12th month free automatically applied on annual lease.',
-          houseRules: ['No smoking', 'No guests overnight without notification', 'Quiet hours: 11 PM – 7 AM'],
+          houseRules: ['No smoking', 'No guests overnight without notification', 'Quiet hours: 11 PM â€“ 7 AM'],
         },
-        aiDescription: 'Architecturally optimised micro-studio at India\'s most central address — Connaught Place. With the "Pay 11 Get 12 Free" RentNest deal, this is the most affordable premium studio in Delhi. 500 Mbps internet and concierge included.',
+        aiDescription: 'Architecturally optimised micro-studio at India\'s most central address â€” Connaught Place. With the "Pay 11 Get 12 Free" RentNest deal, this is the most affordable premium studio in Delhi. 500 Mbps internet and concierge included.',
         images: [
           { url: 'https://images.unsplash.com/photo-1493857671505-72967e2e2760?w=800&h=600&fit=crop&q=80' },
           { url: 'https://images.unsplash.com/photo-1523217311519-d595dc36ab0b?w=800&h=600&fit=crop&q=80' },
@@ -787,15 +793,15 @@ const seedDatabase = async () => {
         ],
       },
       {
-        title: 'Heritage Haveli Suite — 35% Below Market, Always',
-        description: 'An extraordinary 3-bedroom suite inside a restored 200-year-old haveli with hand-painted frescoes, arched doorways, and a central courtyard with a fountain. Every modern comfort has been tastefully integrated without disturbing the original character. RentNest promises this 35% below-market rate is permanent — no revision, ever. A truly once-in-a-lifetime address in the Pink City.',
+        title: 'Heritage Haveli Suite â€” 35% Below Market, Always',
+        description: 'An extraordinary 3-bedroom suite inside a restored 200-year-old haveli with hand-painted frescoes, arched doorways, and a central courtyard with a fountain. Every modern comfort has been tastefully integrated without disturbing the original character. RentNest promises this 35% below-market rate is permanent â€” no revision, ever. A truly once-in-a-lifetime address in the Pink City.',
         propertyType: 'apartment',
         status: 'available',
         isVerified: true,
         price: { amount: 38000, currency: 'INR', period: 'monthly' },
         offer: {
           isActive: true,
-          label: '🏛️ 35% Off Market Rate — Permanent Promise',
+          label: 'ðŸ›ï¸ 35% Off Market Rate â€” Permanent Promise',
           discountPercent: 35,
           originalPrice: 58500,
           badge: 'RARE FIND',
@@ -816,8 +822,8 @@ const seedDatabase = async () => {
           checkOut: '11:00 AM',
           cancellationPolicy: '50% refund if cancelled 10 days before check-in',
           securityDeposit: 76000,
-          extraCharges: 'Heritage tour package available at ₹2,000/month. Utilities included.',
-          houseRules: ['Respect heritage property — no nails/alterations', 'No loud music in courtyard', 'Photography for personal use only'],
+          extraCharges: 'Heritage tour package available at â‚¹2,000/month. Utilities included.',
+          houseRules: ['Respect heritage property â€” no nails/alterations', 'No loud music in courtyard', 'Photography for personal use only'],
         },
         aiDescription: 'Phenomenal 3BHK suite inside a UNESCO-style restored haveli in old Jaipur. 35% below market with RentNest\'s permanent price promise. Hand-painted frescoes, central fountain courtyard, and rooftop sunset terrace make this truly irreplaceable.',
         images: [
@@ -828,15 +834,15 @@ const seedDatabase = async () => {
         ],
       },
       {
-        title: 'Lakeside Condo — Free Parking + 22% Off Forever',
-        description: 'Stunning 2-bedroom lakeside condo on the banks of Hussain Sagar Lake with floor-to-ceiling glass windows, a wrap-around balcony, and direct lake views from every room. RentNest\'s permanent offer includes free covered parking (worth ₹4,000/month) and 22% off the listed market price — locked in for as long as you stay. Ideal for professionals and couples seeking tranquil luxury.',
+        title: 'Lakeside Condo â€” Free Parking + 22% Off Forever',
+        description: 'Stunning 2-bedroom lakeside condo on the banks of Hussain Sagar Lake with floor-to-ceiling glass windows, a wrap-around balcony, and direct lake views from every room. RentNest\'s permanent offer includes free covered parking (worth â‚¹4,000/month) and 22% off the listed market price â€” locked in for as long as you stay. Ideal for professionals and couples seeking tranquil luxury.',
         propertyType: 'condo',
         status: 'available',
         isVerified: true,
         price: { amount: 42000, currency: 'INR', period: 'monthly' },
         offer: {
           isActive: true,
-          label: '💎 22% Off + Free Parking Forever — Member Perk',
+          label: 'ðŸ’Ž 22% Off + Free Parking Forever â€” Member Perk',
           discountPercent: 22,
           originalPrice: 54000,
           badge: 'MEMBER DEAL',
@@ -857,10 +863,10 @@ const seedDatabase = async () => {
           checkOut: '11:00 AM',
           cancellationPolicy: 'Free cancellation up to 10 days before check-in',
           securityDeposit: 84000,
-          extraCharges: 'Covered parking included free. Utilities: ₹2,500-3,500/month. Housekeeping optional at ₹1,800/session.',
-          houseRules: ['Maintain balcony cleanliness', 'Pets with deposit', 'No smoking indoors', 'Jogging track available 5 AM – 10 PM'],
+          extraCharges: 'Covered parking included free. Utilities: â‚¹2,500-3,500/month. Housekeeping optional at â‚¹1,800/session.',
+          houseRules: ['Maintain balcony cleanliness', 'Pets with deposit', 'No smoking indoors', 'Jogging track available 5 AM â€“ 10 PM'],
         },
-        aiDescription: 'Breathtaking lakeside condo on Hussain Sagar with panoramic water views from every room. 22% below market price with free parking — a permanent RentNest member exclusive. Infinity pool, gym, and jogging track complete the resort-style living.',
+        aiDescription: 'Breathtaking lakeside condo on Hussain Sagar with panoramic water views from every room. 22% below market price with free parking â€” a permanent RentNest member exclusive. Infinity pool, gym, and jogging track complete the resort-style living.',
         images: [
           { url: 'https://images.unsplash.com/photo-1512207736139-c1957dd8ded5?w=800&h=600&fit=crop&q=80' },
           { url: 'https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&h=600&fit=crop&q=80' },
@@ -878,7 +884,7 @@ const seedDatabase = async () => {
       const createdProp = await Property.create(prop);
       seededProperties.push(createdProp);
     }
-    console.log(`✅ Seeded ${seededProperties.length} highly detailed properties.`);
+    console.log(`âœ… Seeded ${seededProperties.length} highly detailed properties.`);
 
     // 3. Create mock reviews for each property from tenants
     const mockComments = [
@@ -917,11 +923,11 @@ const seedDatabase = async () => {
       });
     }
 
-    console.log(`✅ Seeded ${reviewCount} tenant reviews across properties.`);
-    console.log('🎉 Database seeding completed successfully!');
+    console.log(`âœ… Seeded ${reviewCount} tenant reviews across properties.`);
+    console.log('ðŸŽ‰ Database seeding completed successfully!');
     process.exit(0);
   } catch (error) {
-    console.error(`❌ Seeder error: ${error.stack || error.message}`);
+    console.error(`âŒ Seeder error: ${error.stack || error.message}`);
     process.exit(1);
   }
 };
