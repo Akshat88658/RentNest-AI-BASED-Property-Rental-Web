@@ -1,4 +1,4 @@
-﻿/**
+/**
  * autoSeed.js — Runs on server startup if DB is empty. Safe for production.
  */
 const bcrypt = require('bcryptjs');
@@ -10,31 +10,42 @@ const Booking = require('../models/Booking');
 const autoSeed = async () => {
   try {
     const count = await Property.countDocuments();
-    if (count > 0) {
-      console.log(✅ DB has  properties — skipping auto-seed.);
+    const offerCount = await Property.countDocuments({ 'offer.isActive': true });
+
+    if (count > 0 && offerCount >= 6) {
+      console.log(`✅ DB has ${count} properties (${offerCount} offer deals) — skipping auto-seed.`);
       return;
     }
-    console.log('🌱 Empty DB detected — running auto-seed...');
 
-    await User.deleteMany();
-    await Property.deleteMany();
-    await Review.deleteMany();
-    await Booking.deleteMany();
+    let landlordUser = await User.findOne({ role: 'landlord' }) || await User.findOne();
+    let tenantUsers = await User.find({ role: 'tenant' });
 
-    const salt = await bcrypt.genSalt(10);
-    const hashedPassword = await bcrypt.hash('password123', salt);
+    if (count === 0 || !landlordUser) {
+      console.log('🌱 Empty DB or missing users detected — running full auto-seed reset...');
 
-    const users = await User.insertMany([
-      { name: 'Admin User',    email: 'admin@airental.com',    password: hashedPassword, role: 'admin',    isVerified: true, avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Admin' },
-      { name: 'John Landlord', email: 'landlord@airental.com', password: hashedPassword, role: 'landlord', isVerified: true, avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=John' },
-      { name: 'Jane Tenant',   email: 'tenant@airental.com',   password: hashedPassword, role: 'tenant',   isVerified: true, avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Jane' },
-      { name: 'Alice Smith',   email: 'tenant2@airental.com',  password: hashedPassword, role: 'tenant',   isVerified: true, avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Alice' },
-      { name: 'Bob Johnson',   email: 'tenant3@airental.com',  password: hashedPassword, role: 'tenant',   isVerified: true, avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Bob' },
-      { name: 'Charlie Davis', email: 'tenant4@airental.com',  password: hashedPassword, role: 'tenant',   isVerified: true, avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Charlie' },
-    ]);
+      await User.deleteMany();
+      await Property.deleteMany();
+      await Review.deleteMany();
+      await Booking.deleteMany();
 
-    const landlordId = users[1]._id;
-    const tenantIds  = [users[2]._id, users[3]._id, users[4]._id, users[5]._id];
+      const salt = await bcrypt.genSalt(10);
+      const hashedPassword = await bcrypt.hash('password123', salt);
+
+      const users = await User.insertMany([
+        { name: 'Admin User',    email: 'admin@airental.com',    password: hashedPassword, role: 'admin',    isVerified: true, avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Admin' },
+        { name: 'John Landlord', email: 'landlord@airental.com', password: hashedPassword, role: 'landlord', isVerified: true, avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=John' },
+        { name: 'Jane Tenant',   email: 'tenant@airental.com',   password: hashedPassword, role: 'tenant',   isVerified: true, avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Jane' },
+        { name: 'Alice Smith',   email: 'tenant2@airental.com',  password: hashedPassword, role: 'tenant',   isVerified: true, avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Alice' },
+        { name: 'Bob Johnson',   email: 'tenant3@airental.com',  password: hashedPassword, role: 'tenant',   isVerified: true, avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Bob' },
+        { name: 'Charlie Davis', email: 'tenant4@airental.com',  password: hashedPassword, role: 'tenant',   isVerified: true, avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Charlie' },
+      ]);
+
+      landlordUser = users[1];
+      tenantUsers  = [users[2], users[3], users[4], users[5]];
+    }
+
+    const landlordId = landlordUser._id;
+    const tenantIds  = tenantUsers.map(u => u._id);
 
     const propertiesData = [
       { title: 'Cozy Studio Near Tech Park', description: 'Perfect studio for tech professionals near Tech Park. Fully furnished with modern amenities.', propertyType: 'studio', status: 'available', isVerified: true, price: { amount: 15000, currency: 'INR', period: 'monthly' }, location: { address: '123 Tech Avenue, Whitefield', city: 'Bangalore', state: 'Karnataka', pincode: '560001', coordinates: { lat: 12.9716, lng: 77.5946 } }, features: { bedrooms: 0, bathrooms: 1, area: 300, furnished: 'fully-furnished', parking: true, petFriendly: false }, amenities: ['WiFi', 'AC', 'Kitchen', 'CCTV Security', 'Parking'], bookingDetails: { minStay: 1, maxStay: 365, checkIn: '2:00 PM', checkOut: '11:00 AM', cancellationPolicy: 'Free cancellation up to 7 days', securityDeposit: 30000, extraCharges: 'No extra charges.', houseRules: ['No smoking', 'No loud music after 10 PM'] }, aiDescription: 'Ideal studio for tech professionals in Whitefield.', images: [{ url: 'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800&h=600&fit=crop&q=80' }, { url: 'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800&h=600&fit=crop&q=80' }] },
@@ -65,10 +76,17 @@ const autoSeed = async () => {
     const seededProperties = [];
     for (const prop of propertiesData) {
       prop.owner = landlordId;
-      const created = await Property.create(prop);
-      seededProperties.push(created);
+      const existing = await Property.findOne({ title: prop.title });
+      if (!existing) {
+        const created = await Property.create(prop);
+        seededProperties.push(created);
+      } else if (prop.offer && (!existing.offer || !existing.offer.isActive)) {
+        existing.offer = prop.offer;
+        await existing.save();
+        seededProperties.push(existing);
+      }
     }
-    console.log('✅ Auto-seeded ' + seededProperties.length + ' properties.');
+    console.log('✅ Auto-seeded / updated ' + seededProperties.length + ' properties.');
 
     const mockComments = ['Stunning place! Extremely clean.', 'Very convenient location. Top-notch amenities.', 'Great experience. Excellent security.', 'Absolutely loved staying here!', 'Clean, modern, very comfortable.', 'All features as advertised. Would book again.'];
     let reviewCount = 0;
