@@ -74,6 +74,13 @@ const propertySchema = new mongoose.Schema(
     totalReviews: { type: Number, default: 0 },
     aiDescription: { type: String, default: '' },
     isVerified: { type: Boolean, default: false },
+    offer: {
+      isActive:        { type: Boolean, default: false },
+      label:           { type: String, default: '' },       // e.g. "🔥 Limited Time Deal"
+      discountPercent: { type: Number, default: 0 },        // e.g. 20 (%)
+      originalPrice:   { type: Number, default: 0 },       // price before discount
+      badge:           { type: String, default: '' },       // e.g. "BESTSELLER" / "HOT DEAL"
+    },
   },
   {
     timestamps: true,
