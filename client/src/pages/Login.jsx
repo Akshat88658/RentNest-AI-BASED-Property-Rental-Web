@@ -3,13 +3,14 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import toast from 'react-hot-toast';
 import { getErrorMessage } from '../utils/helpers';
-import { FiMail, FiLock, FiEye, FiEyeOff } from 'react-icons/fi';
+import { FiMail, FiLock, FiEye, FiEyeOff, FiRefreshCw } from 'react-icons/fi';
 
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [serverSleeping, setServerSleeping] = useState(false);
 
   const { login } = useAuth();
   const navigate = useNavigate();
@@ -21,12 +22,19 @@ function Login() {
     }
 
     setIsLoading(true);
+    setServerSleeping(false);
     try {
       await login(email, password);
       toast.success('Welcome back!');
       navigate('/dashboard');
     } catch (err) {
-      toast.error(getErrorMessage(err));
+      // Check if this is a Render cold-start / 503 scenario
+      if (err.isServerSleep || err.status === 503) {
+        setServerSleeping(true);
+        toast.error('Server is waking up — please try again in a moment.', { duration: 6000 });
+      } else {
+        toast.error(getErrorMessage(err));
+      }
     } finally {
       setIsLoading(false);
     }
@@ -95,6 +103,29 @@ function Login() {
             <h3>Sign In</h3>
             <p>Access your RentNest dashboard</p>
           </div>
+
+          {/* 503 / Server-sleeping warning banner */}
+          {serverSleeping && (
+            <div style={{
+              background: 'rgba(245, 158, 11, 0.12)',
+              border: '1px solid rgba(245, 158, 11, 0.4)',
+              borderRadius: '10px',
+              padding: '0.875rem 1rem',
+              marginBottom: '1rem',
+              display: 'flex',
+              alignItems: 'flex-start',
+              gap: '0.75rem',
+              fontSize: '0.85rem',
+              color: '#fbbf24',
+              lineHeight: 1.5,
+            }}>
+              <FiRefreshCw size={16} style={{ marginTop: '2px', flexShrink: 0 }} />
+              <div>
+                <strong>Server is waking up</strong> — Free-tier hosting goes to sleep after inactivity.
+                Please wait ~30 seconds and try again.
+              </div>
+            </div>
+          )}
 
           <form onSubmit={handleSubmit} className="auth-form">
             {/* Email Field */}
